@@ -10,7 +10,7 @@ const server = http.createServer((req, res) => {
                 console.log('It has been Saved');
             })
 
-            res.end(
+            res.write(
                 ` <!doctype html>
                     <html>
                     <body>
@@ -19,9 +19,10 @@ const server = http.createServer((req, res) => {
                    </body>
                     </html>`
             );
+            res.end();
         });
     } else {
-        res.end(`
+        res.write(`
             <!doctype html>
             <html>
             <body>
@@ -32,6 +33,8 @@ const server = http.createServer((req, res) => {
             </body>
             </html>
         `);
+        res.end();
+
     }
 });
 server.listen(8080);
